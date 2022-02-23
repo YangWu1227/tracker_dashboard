@@ -1,11 +1,27 @@
 Package: TrackerDashboard
-Title: What the Package Does (One Line, Title Case)
+Title: A dashboard for visualizing package and library download trends for R and Python
 Version: 0.0.0.9000
 Authors@R: 
     person("Yang", "Wu", , "yangwu2020@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0001-9847-0112"))
-Description: What the package does (one paragraph).
+Description: The TrackerDashboard is a project for tracking the Cranlogs for R andGoogle BigQuery for Python.
 License: MIT + file LICENSE
+Depends:
+    R (>= 3.3.0)
+Imports:
+    shiny (>= 1.7.1),
+    shinydashboard (>= 0.7.2),
+    shinymanager (>= 1.0.400),
+    bs4Dash (>= 2.0.3),
+    data.table (>= 1.14.2),
+    dplyr (>= 1.0.7),
+    cranlogs (>=2.1.1)
+Suggests:
+    xml2,
+    covr,
+    sloop (>= 1.0.1),
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.2
