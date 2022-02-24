@@ -1,5 +1,5 @@
-library(shinymanager)
-library(keyring)
+#' @importFrom keyring key_set_with_value key_get
+#' @importFrom shinymanager create_db
 
 # Credentials database ----------------------------------------------------
 

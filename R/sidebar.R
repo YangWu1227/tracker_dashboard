@@ -1,11 +1,14 @@
 #' Sidebar
 #'
-#' @importFrom bs4Dash bs4DashSidebar sidebarUserPanel sidebarHeader menuItem
-#' @export
+#' @importFrom bs4Dash bs4DashSidebar sidebarUserPanel sidebarHeader menuItem sidebarMenu
 #'
+#' @export
 sidebar <- function() {
   bs4DashSidebar(
-    # Parameters
+
+    ############################
+    # Customization parameters #
+    ############################
     disable = FALSE,
     width = 250,
     skin = "light",
@@ -17,7 +20,11 @@ sidebar <- function() {
     fixed = TRUE,
     id = "sidbar",
     customArea = NULL,
-    # User panel
+
+    ##############
+    # User panel #
+    ##############
+
     sidebarUserPanel(
       name = "Welcome To The Dashboard!"
     ),
