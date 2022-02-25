@@ -8,6 +8,7 @@
 #' @importFrom shinymanager secure_app secure_server check_credentials
 #' @importFrom cranlogs cran_top_downloads cran_downloads
 #' @importFrom shiny reactive shinyApp
+#' @importFrom highcharter renderHighchart
 #' @importFrom plotly renderPlotly
 #' @importFrom bs4Dash dashboardPage
 #'
@@ -79,8 +80,8 @@ runApp <- function(top_packages = cran_top_downloads(count = 5)$package, today =
       )
     })
 
-    output$R_plot <- renderPlotly({
-      r_plot(R_downloads(), x = "date", y = "count", group = "package")
+    output$R_plot <- renderHighchart({
+      r_plot_hc(R_downloads(), x = "date", y = "count", group = "package")
     })
   }
 

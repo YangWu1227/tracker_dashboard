@@ -6,6 +6,7 @@
 #'
 #' @importFrom bs4Dash dashboardBody tabItems tabItem box boxLabel boxSidebar
 #' @importFrom shiny fluidRow dateRangeInput textInput actionButton
+#' @importFrom highcharter highchartOutput
 #' @importFrom plotly plotlyOutput
 #' @importFrom cranlogs cran_top_downloads
 #'
@@ -55,7 +56,7 @@ body_ <- function(top_packages, today, last_month) {
               start = last_month,
               end = today
             ),
-            plotlyOutput(outputId = "R_plot")
+            highchartOutput(outputId = "R_plot")
           )
         )
       )
