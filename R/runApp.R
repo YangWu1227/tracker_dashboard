@@ -64,22 +64,19 @@ runApp <- function(top_packages, today, last_month) {
       )
     )
 
-
-    # Reactive expression for packages
-    # Use [[ since strsplit() returns a list, returning a character vector of package names
-    # The ", ?" regex matches a comma and a space character
-    R_packages <- reactive(strsplit(x = input$R_packages, split = ", ?")[[1]]) |>
-      bindCache(input$R_packages, cache = "app")
-
     R_downloads <- reactive({
+
+      # Use [[ since strsplit() returns a list, returning a character vector of package names
+      # The ", ?" regex matches a comma and a space character
+      R_packages <- strsplit(x = input$R_packages, split = ", ?")[[1]]
       # Daily package downloads data
       # Returns as data frame with columns: package, date, count
       dt <- cran_downloads(
-        packages = R_packages(),
+        packages = R_packages,
         from = input$R_date_range_input[[1]],
         to = input$R_date_range_input[[2]]
       )
-    }) |> bindCache(input$R_date_range_input, cache = "app")
+    }) |> bindCache(input$R_packages, input$R_date_range_input, cache = "app")
 
 
     output$R_plot <- renderPlotly({
