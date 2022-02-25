@@ -7,7 +7,7 @@
 #' @import htmltools
 #' @importFrom shinymanager secure_app secure_server check_credentials
 #' @importFrom cranlogs cran_top_downloads cran_downloads
-#' @importFrom shiny reactive shinyApp
+#' @importFrom shiny reactive shinyApp bindCache
 #' @importFrom highcharter renderHighchart
 #' @importFrom plotly renderPlotly
 #' @importFrom bs4Dash dashboardPage
@@ -68,7 +68,8 @@ runApp <- function(top_packages = cran_top_downloads(count = 5)$package, today =
     # Reactive expression for packages
     # Use [[ since strsplit() returns a list, returning a character vector of package names
     # The ", ?" regex matches a comma and a space character
-    R_packages <- reactive(strsplit(x = input$R_packages, split = ", ?")[[1]])
+    R_packages <- reactive(strsplit(x = input$R_packages, split = ", ?")[[1]]) |>
+      bindCache(input$R_packages, cache = "app")
 
     R_downloads <- reactive({
       # Daily package downloads data
@@ -78,10 +79,11 @@ runApp <- function(top_packages = cran_top_downloads(count = 5)$package, today =
         from = input$R_date_range_input[[1]],
         to = input$R_date_range_input[[2]]
       )
-    })
+    }) |> bindCache(input$R_date_range_input, cache = "app")
 
-    output$R_plot <- renderHighchart({
-      r_plot_hc(R_downloads(), x = "date", y = "count", group = "package")
+
+    output$R_plot <- renderPlotly({
+      r_plot(R_downloads(), x = "date", y = "count", group = "package")
     })
   }
 

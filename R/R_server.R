@@ -6,7 +6,7 @@
 #' @param group Grouping variable
 #'
 #' @importFrom ggplot2 ggplot aes geom_line xlab ylab theme element_blank element_blank
-#' @importFrom plotly ggplotly config
+#' @importFrom plotly ggplotly config layout
 #' @importFrom rlang ensym
 #'
 #' @export
@@ -14,6 +14,7 @@ r_plot <- function(data, x, y, group) {
   x <- ensym(x)
   y <- ensym(y)
   group <- ensym(group)
+
   p <- ggplot(data, mapping = aes(!!x, !!y, colour = !!group)) +
     geom_line() +
     xlab(NULL) +
@@ -26,7 +27,8 @@ r_plot <- function(data, x, y, group) {
   ggplotly(p) |>
     config(modeBarButtonsToRemove = list(
       "zoom", "select", "lasso", "zoomIn", "zoomOut", "resetScale"
-    ))
+    )) |>
+    layout(plot_bgcolor = "transparent", paper_bgcolor = "transparent")
 }
 
 
@@ -38,7 +40,7 @@ r_plot <- function(data, x, y, group) {
 #' @param y The y variable.
 #' @param group Grouping variable
 #'
-#' @importFrom highcharter hchart hcaes hc_yAxis hc_legend
+#' @importFrom highcharter hchart hcaes hc_yAxis hc_legend hc_tooltip
 #'
 #' @export
 r_plot_hc <- function(data, x, y, group) {
@@ -47,6 +49,7 @@ r_plot_hc <- function(data, x, y, group) {
   group <- ensym(group)
 
   hchart(data, "line", hcaes(x = !!x, y = !!y, group = !!group)) |>
-    hc_yAxis(title = list(text = "Daily Downloads")) |>
-    hc_legend(itemStyle = list(color = "#777"))
+    hc_yAxis(title = list(text = "<span style='color:#777'><b>Daily Downloads</b></span>", useHTML = TRUE)) |>
+    hc_legend(itemStyle = list(color = "#777")) |>
+    hc_tooltip(shared = TRUE)
 }

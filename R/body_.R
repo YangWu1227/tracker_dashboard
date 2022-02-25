@@ -56,7 +56,7 @@ body_ <- function(top_packages, today, last_month) {
               start = last_month,
               end = today
             ),
-            highchartOutput(outputId = "R_plot")
+            plotlyOutput(outputId = "R_plot")
           )
         )
       )
