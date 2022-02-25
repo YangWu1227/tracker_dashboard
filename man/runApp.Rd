@@ -4,11 +4,7 @@
 \alias{runApp}
 \title{Run application}
 \usage{
-runApp(
-  top_packages = cran_top_downloads(count = 5)$package,
-  today = Sys.Date() - 1,
-  last_month = Sys.Date() - 61
-)
+runApp(top_packages, today, last_month)
 }
 \arguments{
 \item{top_packages}{A character vector of packages names.}

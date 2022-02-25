@@ -13,7 +13,7 @@
 #' @importFrom bs4Dash dashboardPage
 #'
 #' @export
-runApp <- function(top_packages = cran_top_downloads(count = 5)$package, today = Sys.Date() - 1, last_month = Sys.Date() - 61) {
+runApp <- function(top_packages, today, last_month) {
 
   # UI ----------------------------------------------------------------------
 
