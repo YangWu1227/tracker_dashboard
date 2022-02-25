@@ -1,4 +1,4 @@
-#' Application
+#' Run application
 #'
 #' @param top_packages A character vector of packages names.
 #' @param today Today's date.
@@ -12,7 +12,7 @@
 #' @importFrom bs4Dash dashboardPage
 #'
 #' @export
-run_app <- function(top_packages = cran_top_downloads(count = 5)$package, today = Sys.Date() - 1, last_month = Sys.Date() - 61) {
+runApp <- function(top_packages = cran_top_downloads(count = 5)$package, today = Sys.Date() - 1, last_month = Sys.Date() - 61) {
 
   # UI ----------------------------------------------------------------------
 
