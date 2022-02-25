@@ -7,13 +7,13 @@
 #'
 #' @importFrom ggplot2 ggplot aes geom_line xlab ylab theme element_blank element_blank
 #' @importFrom plotly ggplotly config
-#' @importFrom rlang enquo
+#' @importFrom rlang ensym
 #'
 #' @export
 r_plot <- function(data, x, y, group) {
-  x <- enquo(x)
-  y <- enquo(y)
-  group <- enquo(group)
+  x <- ensym(x)
+  y <- ensym(y)
+  group <- ensym(group)
   p <- ggplot(data, mapping = aes(!!x, !!y, colour = !!group)) +
     geom_line() +
     xlab(NULL) +

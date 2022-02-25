@@ -58,7 +58,7 @@ run_app <- function(top_packages = cran_top_downloads(count = 5)$package, today 
     # Check_credentials directly on sqlite database
     auth <- secure_server(
       check_credentials = check_credentials(
-        db = "credentials_database.sqlite",
+        db = system.file("extdata", "credentials_database.sqlite", package = "TrackerDashboard", mustWork = TRUE),
         passphrase = "credentials_db_password"
       )
     )
@@ -80,7 +80,7 @@ run_app <- function(top_packages = cran_top_downloads(count = 5)$package, today 
     })
 
     output$R_plot <- renderPlotly({
-      r_plot(R_downloads(), x = date, y = count, group = package)
+      r_plot(R_downloads(), x = "date", y = "count", group = "package")
     })
   }
 
