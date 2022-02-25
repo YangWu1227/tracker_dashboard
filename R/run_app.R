@@ -58,7 +58,7 @@ run_app <- function(top_packages = cran_top_downloads(count = 5)$package, today 
     # Check_credentials directly on sqlite database
     auth <- secure_server(
       check_credentials = check_credentials(
-        db = system.file("extdata", "credentials_database.sqlite", package = "TrackerDashboard", mustWork = TRUE),
+        db = app_sys("extdata", "credentials_database.sqlite"),
         passphrase = "credentials_db_password"
       )
     )
