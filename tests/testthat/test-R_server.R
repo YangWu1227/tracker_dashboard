@@ -18,10 +18,6 @@ test_that("plot_R() returns correct ggplotly output", {
   expect_type(object = plot_R, type = "list")
 })
 
-test_that("snapshot for ggplotly output", {
-  vdiffr::expect_doppelganger(title = "Output for ggplotly line plot", fig = plot_R)
-})
-
 # Tests for highcharter ---------------------------------------------------
 
 test_that("plot_R_hc() returns correct highcharts output", {
@@ -29,8 +25,4 @@ test_that("plot_R_hc() returns correct highcharts output", {
   expect_s3_class(object = plot_R_hc, class = c("highchart", "htmlwidget"), exact = T)
   # Base type
   expect_type(object = plot_R_hc, type = "list")
-})
-
-test_that("snapshot for highcharts output", {
-  vdiffr::expect_doppelganger(title = "Output for highcharts line plot", fig = plot_R_hc)
 })
