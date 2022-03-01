@@ -4,7 +4,7 @@
 \alias{runApp}
 \title{Run application}
 \usage{
-runApp(top_packages, today, last_month)
+runApp(top_packages, today, last_month, pool_obj)
 }
 \arguments{
 \item{top_packages}{A character vector of packages names.}
@@ -12,6 +12,8 @@ runApp(top_packages, today, last_month)
 \item{today}{Today's date.}
 
 \item{last_month}{Last month's date.}
+
+\item{pool_obj}{A pool object with a reference to BigQuery.}
 }
 \description{
 Run application
