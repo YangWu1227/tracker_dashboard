@@ -91,7 +91,7 @@ body_ <- function(top_packages, today, last_month) {
             id = NULL,
             textInput(
               "python_package",
-              HTML("<span style='font-size:12.0pt'><b>Enter a single Python package to visualize its daily downloads for the past six monthds: <br><span style='font-size:9.0pt'>It may take a few seconds to retrieve the data.</span></b></span>"),
+              HTML("<span style='font-size:12.0pt'><b>Enter a single Python package to visualize its daily downloads for the past six months: <br><span style='font-size:9.0pt'>It may take a few seconds to retrieve the data.</span></b></span>"),
               "datatable"
             ),
             actionButton("run_query", "Run Query"),
