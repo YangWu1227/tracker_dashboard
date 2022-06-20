@@ -4,6 +4,7 @@
 #' @param today Today's date.
 #' @param last_month Last month's date.
 #' @param pool_obj A pool object with a reference to BigQuery.
+#' @param auth A length-one logical vector, indicating whether to require authentication. By default, FASLE.
 #'
 #' @import htmltools
 #' @importFrom shinymanager secure_app secure_server check_credentials
@@ -16,7 +17,7 @@
 #' @importFrom glue glue
 #'
 #' @export
-runApp <- function(top_packages, today, last_month, pool_obj) {
+runApp <- function(top_packages, today, last_month, pool_obj, auth = FALSE) {
 
   # UI ----------------------------------------------------------------------
 
@@ -29,43 +30,46 @@ runApp <- function(top_packages, today, last_month, pool_obj) {
 
   # Secure app --------------------------------------------------------------
 
-  ui <- secure_app(
-    ui,
-    enable_admin = TRUE,
-    # Top
-    tags_top =
-      tags$div(
-        # The <h4> tag defines the fourth level heading
-        tags$h3("Welcome to", style = "align:center"),
-        tags$img(
-          src = "www/sticker.png", width = 100
+  if (auth) {
+    ui <- secure_app(
+      ui,
+      enable_admin = TRUE,
+      # Top
+      tags_top =
+        tags$div(
+          # The <h4> tag defines the fourth level heading
+          tags$h3("Welcome to", style = "align:center"),
+          tags$img(
+            src = "www/sticker.png", width = 100
+          )
+        ),
+      # Bottom
+      tags_bottom = tags$div(
+        tags$p(
+          "For any question, please contact the",
+          tags$a(
+            href = "mailto:yangwu2020@gmail.com?subject=Shiny%20aManager",
+            target = "_top", "administrator"
+          )
         )
       ),
-    # Bottom
-    tags_bottom = tags$div(
-      tags$p(
-        "For any question, please contact the",
-        tags$a(
-          href = "mailto:yangwu2020@gmail.com?subject=Shiny%20aManager",
-          target = "_top", "administrator"
-        )
-      )
-    ),
-    # Background
-    background = "linear-gradient(315deg, #ffffff 0%, #d7e1ec 74%);"
-  )
+      # Background
+      background = "linear-gradient(315deg, #ffffff 0%, #d7e1ec 74%);"
+    )
+  }
 
   # Server ------------------------------------------------------------------
 
   server <- function(input, output, session) {
-
-    # Check_credentials directly on sqlite database
-    auth <- secure_server(
-      check_credentials = check_credentials(
-        db = app_sys("extdata", "credentials_database.sqlite"),
-        passphrase = "credentials_db_password"
+    if (auth) {
+      # Check_credentials directly on sqlite database
+      auth <- secure_server(
+        check_credentials = check_credentials(
+          db = app_sys("extdata", "credentials_database.sqlite"),
+          passphrase = "credentials_db_password"
+        )
       )
-    )
+    }
 
     #########
     # R tab #

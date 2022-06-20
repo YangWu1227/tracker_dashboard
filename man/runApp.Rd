@@ -4,7 +4,7 @@
 \alias{runApp}
 \title{Run application}
 \usage{
-runApp(top_packages, today, last_month, pool_obj)
+runApp(top_packages, today, last_month, pool_obj, auth = FALSE)
 }
 \arguments{
 \item{top_packages}{A character vector of packages names.}
@@ -14,6 +14,8 @@ runApp(top_packages, today, last_month, pool_obj)
 \item{last_month}{Last month's date.}
 
 \item{pool_obj}{A pool object with a reference to BigQuery.}
+
+\item{auth}{A length-one logical vector, indicating whether to require authentication. By default, FASLE.}
 }
 \description{
 Run application
