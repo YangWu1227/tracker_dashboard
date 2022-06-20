@@ -17,7 +17,7 @@ Imports:
     data.table (>= 1.14.2),
     dplyr (>= 1.0.7),
     cranlogs (>= 2.1.1),
-    plotly (>= 4.10.0.9),
+    plotly (>= 4.10.0),
     highcharter (>= 0.9.4),
     htmltools (>= 0.5.2),
     ggplot2 (>= 3.3.5),
