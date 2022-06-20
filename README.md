@@ -28,5 +28,5 @@ Install TrackerDashboard from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("YangWu1227/tracker_dashboard")
+devtools::install_github("YangWu1227/tracker-dashboard")
 ```
