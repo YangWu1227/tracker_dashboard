@@ -2,16 +2,24 @@
 
 #' @importFrom pool dbPool poolClose
 #' @export
-pool::dbPool
+dbPool
 #' @export
-pool::poolClose
+poolClose
 
 # Rexports from bigrquery -------------------------------------------------
 
-#' @importFrom bigrquery bigquery bq_auth
+#' @importFrom bigrquery bigquery bq_auth bq_test_project
 #' @export
-bigrquery::bq_auth
+bq_auth
 #' @export
-bigrquery::bigquery
+bigquery
+#' @export
+bq_test_project
 
+# Reexports from cranlogs -------------------------------------------------
 
+#' @importFrom cranlogs cran_top_downloads cran_downloads
+#' @export
+cran_top_downloads
+#' @export
+cran_downloads
