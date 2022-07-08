@@ -1,11 +1,11 @@
 # snapshots for sidebar()
 
-    <aside id="sidbar" data-fixed="true" data-minified="true" data-collapsed="false" data-disable="FALSE" class="main-sidebar sidebar-light-primary elevation-4">
+    <aside id="sidebar" data-fixed="true" data-minified="false" data-collapsed="false" data-disable="FALSE" class="main-sidebar sidebar-light-primary elevation-4">
       <div class="sidebar" id="sidebarItemExpanded">
         <nav class="mt-2">
           <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="info">
-              <a class="d-block" href="#">Welcome To The Dashboard!</a>
+              <a class="d-block" href="#">Powered By R Shiny!</a>
             </div>
           </div>
           <ul class="nav nav-pills nav-sidebar flex-column sidebar-menu nav-child-indent" data-widget="treeview" role="menu" data-accordion="true">
@@ -22,7 +22,7 @@
                 <p>Python</p>
               </a>
             </li>
-            <div id="current_tab" class="sidebarMenuSelectedTabItem" data-value="null"></div>
+            <div id="sidebar_menu" class="sidebarMenuSelectedTabItem" data-value="null"></div>
           </ul>
         </nav>
       </div>

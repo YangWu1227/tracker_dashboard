@@ -7,7 +7,6 @@ df <- cran_downloads(
 )
 
 plot_R <- r_plot(df, "date", "count", "package")
-plot_R_hc <- r_plot_hc(df, "date", "count", "package")
 
 # Tests for ggplotly ------------------------------------------------------
 
@@ -16,13 +15,4 @@ test_that("plot_R() returns correct ggplotly output", {
   expect_s3_class(object = plot_R, class = c("plotly", "htmlwidget"), exact = T)
   # Base type
   expect_type(object = plot_R, type = "list")
-})
-
-# Tests for highcharter ---------------------------------------------------
-
-test_that("plot_R_hc() returns correct highcharts output", {
-  # S3 class
-  expect_s3_class(object = plot_R_hc, class = c("highchart", "htmlwidget"), exact = T)
-  # Base type
-  expect_type(object = plot_R_hc, type = "list")
 })

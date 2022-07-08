@@ -34,7 +34,7 @@ df <- cran_downloads(
 # Tests -------------------------------------------------------------------
 
 test_that("server function returns correct reactive value", {
-  shiny::testServer(server, {
+  testServer(server, {
     # Simulate user input
     session$setInputs(
       R_packages = "data.table, dplyr",
