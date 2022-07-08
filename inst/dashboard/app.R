@@ -1,8 +1,4 @@
-pkgload::load_all(".")
-library(bigrquery)
-library(shiny)
-library(pool)
-library(DBI)
+library(TrackerDashboard)
 
 # Service account token ---------------------------------------------------
 
@@ -22,9 +18,10 @@ onStop(function() {
 
 # Variables for default R text inputs -------------------------------------
 
-top5 <- cranlogs::cran_top_downloads(count = 5)$package
+top5 <- cran_top_downloads(count = 5)$package
 today <- Sys.Date() - 1
 last_month <- today - 60
 
-TrackerDashboard::runApp(top5, today, last_month, pool)
+runApp(top5, today, last_month, pool)
+
 
