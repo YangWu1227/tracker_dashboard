@@ -22,7 +22,7 @@ python_plot <- function(data, x, y) {
 
   ggplotly(p) |>
     config(modeBarButtonsToRemove = list(
-      "zoom", "select", "lasso", "zoomIn", "zoomOut", "resetScale"
+      "select", "lasso", "zoomIn", "zoomOut", "resetScale"
     )) |>
     layout(
       paper_bgcolor = "transparent",
