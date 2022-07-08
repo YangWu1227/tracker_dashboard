@@ -15,10 +15,10 @@ sidebar <- function() {
     status = "primary",
     elevation = 4,
     collapsed = FALSE,
-    minified = TRUE,
+    minified = FALSE,
     expandOnHover = TRUE,
     fixed = TRUE,
-    id = "sidbar",
+    id = "sidebar",
     customArea = NULL,
 
     ##############
@@ -26,11 +26,11 @@ sidebar <- function() {
     ##############
 
     sidebarUserPanel(
-      name = "Welcome To The Dashboard!"
+      name = "Powered By R Shiny!"
     ),
     # Sidebar
     sidebarMenu(
-      id = "current_tab",
+      id = "sidebar_menu",
       flat = FALSE,
       compact = FALSE,
       # Indent child menuItem() after each sidebarHeader()
