@@ -5,15 +5,47 @@
 #' @param last_month Last month's date.
 #'
 #' @importFrom bs4Dash dashboardBody tabItems tabItem box boxLabel boxSidebar
-#' @importFrom shiny fluidRow dateRangeInput textInput actionButton
-#' @importFrom highcharter highchartOutput
 #' @importFrom plotly plotlyOutput
 #' @importFrom cranlogs cran_top_downloads
 #'
 #' @export
 body_ <- function(top_packages, today, last_month) {
   dashboardBody(
+
+    ################
+    # Resize plots #
+    ################
+
+    tags$head(
+      tags$script(
+        "$(function() {
+            function resizeBoxContent(trigger, target) {
+              $(trigger).on('click', function() {
+                setTimeout(function() {
+                  var isMaximized = $('html').hasClass('maximized-card');
+                    if (isMaximized) {
+                      $(target).css('height', '100%');
+                    } else {
+                      $(target).css('height', '400px');
+                    }
+                }, 300);
+                $(target).trigger('resize');
+              });
+            }
+            setTimeout(function() {
+              resizeBoxContent('#R_box [data-card-widget=\"maximize\"]', '#R_plot');
+              resizeBoxContent('#python_box [data-card-widget=\"maximize\"]', '#python_plot');
+            }, 500);
+          });
+          "
+      )
+    ),
     tabItems(
+
+      #########
+      # R tab #
+      #########
+
       tabItem(
         tabName = "R-downloads",
         fluidRow(
@@ -39,12 +71,12 @@ body_ <- function(top_packages, today, last_month) {
             icon = NULL,
             gradient = FALSE,
             boxToolSize = "sm",
-            elevation = NULL,
+            elevation = 4,
             headerBorder = TRUE,
             # Box label
             label = boxLabel("Credit", "primary", tooltip = "The inspiration of this visualization comes from Hadley Wickham."),
             dropdownMenu = NULL,
-            id = NULL,
+            id = "R_box",
             textInput(
               "R_packages",
               "Packages",
@@ -60,6 +92,11 @@ body_ <- function(top_packages, today, last_month) {
           )
         )
       ),
+
+      ##############
+      # Python tab #
+      ##############
+
       tabItem(
         tabName = "python-downloads",
         fluidRow(
@@ -85,10 +122,10 @@ body_ <- function(top_packages, today, last_month) {
             icon = NULL,
             gradient = FALSE,
             boxToolSize = "sm",
-            elevation = NULL,
+            elevation = 4,
             headerBorder = TRUE,
             dropdownMenu = NULL,
-            id = NULL,
+            id = "python_box",
             textInput(
               "python_package",
               HTML("<span style='font-size:12.0pt'><b>Enter a single Python package to visualize its daily downloads for the past six months: <br><span style='font-size:9.0pt'>It may take a few seconds to retrieve the data.</span></b></span>"),
