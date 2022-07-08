@@ -1,7 +1,6 @@
 #' Header
 #'
 #' @importFrom bs4Dash dashboardHeader dashboardBrand
-#' @importFrom shiny icon
 #' @export
 #'
 header <- function() {

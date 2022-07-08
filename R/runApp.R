@@ -8,9 +8,7 @@
 #'
 #' @import htmltools
 #' @importFrom shinymanager secure_app secure_server check_credentials
-#' @importFrom cranlogs cran_top_downloads cran_downloads
-#' @importFrom shiny reactive shinyApp bindCache bindEvent onStop
-#' @importFrom highcharter renderHighchart
+#' @import shiny
 #' @importFrom plotly renderPlotly
 #' @importFrom bs4Dash dashboardPage
 #' @importFrom DBI dbGetQuery
