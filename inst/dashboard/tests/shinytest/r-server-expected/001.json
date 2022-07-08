@@ -1,0 +1,17 @@
+{
+  "input": {
+    "R_date_range_input": [
+      "2017-12-27",
+      "2022-07-07"
+    ],
+    "R_packages": "reticulate",
+    "python_package": "datatable",
+    "run_query": 0
+  },
+  "output": {
+
+  },
+  "export": {
+
+  }
+}
