@@ -89,3 +89,13 @@ last_month <- today - 60
 
 runApp(top5, today, last_month, pool)
 ```
+
+## Dashboard Interface
+
+### Polars (Python)
+
+![](inst/extdata/polars.png)
+
+### Data.Table & Dplyr (R)
+
+![](inst/extdata/data_table_dplyr.png)
